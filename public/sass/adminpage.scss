@@ -1,0 +1,68 @@
+﻿.adminpage{
+  .left_nav{
+    .left_nav_ul{
+      li{
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+  .right_con{
+    .right_title{
+      text-align: center;
+      p{
+        font-weight: bold;
+      }
+    }
+    .change_time{
+      padding: 20px 15px;
+    }
+    .admin_change_form{
+      width: 500px;
+      height: 300px;
+      vertical-align: middle;
+      margin: 0 auto;
+      text-align: center;
+      span{
+        display: inline-block;
+        font-size: 18px;
+        width: 90px;
+        height: 25px;
+        text-align: right;
+      }
+      input{
+        font-size: 16px;
+        text-align: center;
+      }
+      .ticket_num_input{
+        width: 245px;
+        height: 25px;
+      }
+      select{
+        width: 245px;
+        height: 25px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 25px;
+      }
+      .change_anno_con{
+        width: 450px;
+        height: 200px;
+        font-size: 20px;
+        line-height: 24px;
+        text-indent: 2em;
+      }
+    }
+    .admin_change_btn{
+      text-align: center;
+      margin-top: 30px;
+      a{
+        width: 200px;
+        padding: 18px 0;
+        text-align: center;
+        font-size: 24px;
+        line-height: 24px;
+      }
+    }
+  }
+}

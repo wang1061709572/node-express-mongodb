@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>订票</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/graduationDesign.css" />
+    <script src="/javascripts/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <a href="javascript:;" id="logo_btn"><img src="/images/logo.png"></a>
+        </div>
+    </header>
+    <div class="nav">
+        <div class="list">
+            <nav>
+                <ul class="nav_ul">
+                    <li id="li_hp">首页</li>
+                    <li id="li_booking">订票</li>
+                    <li id="li_personal">个人中心</li>
+                </ul>
+            </nav>
+            <div class="user">
+                <span class="user_d"><a href="login.html" target="_blank">登录</a></span>
+                <span class="user_d"><a href="register.html" target="_blank">注册</a></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div style="width: 700px;margin: auto;">
+            <div style="width: 100%;min-height: 130px;margin: 115px auto">
+                <div class="con_select">
+                    <div class="order_con">
+                        <table>
+                            <thead>
+                            <tr>
+                                <td>出发日期</td>
+                                <td>出发时间</td>
+                                <td>出发校区</td>
+                                <td>目的校区</td>
+                                <td>剩余票数</td>
+                                <td>价格</td>
+                                <td>操作</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% function person(person) { %>
+                            <tr class="item-id-<%= person._id %>">
+                                <td id="ticketDay_<%= person._id %>"><%= person.ticketDay %></td>
+                                <td id="ticketTime_<%= person._id %>"><%= person.ticketTime %></td>
+                                <td id="originplace_<%= person._id %>"><%= person.originplace %></td>
+                                <td id="destination_<%= person._id %>"><%= person.destination %></td>
+                                <td id="ticketnum_<%= person._id %>"><%= person.ticketnum %></td>
+                                <td id="price_<%= person._id %>"><%= person.price %></td>
+                                <td>
+                                    <button class="btn" type="submit">订票</button>
+                                </td>
+                            </tr>
+                            <% } %>
+                            <% persons.map(person) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="img_weibo">
+                <img src="/images/weibo.jpg" class="weibo" />
+                <p>官方微博</p>
+            </div>
+            <div class="footer_center">
+                <img src="/images/blue.png" class="blue" />
+                <div class="word">
+                    <p><a href="http://www3.sdufe.edu.cn/nic/list.php?id=3104">常见网络问题解答</a></p>
+                    <p>管理员信箱：info@sdufe.edu.cn</p>
+                    <p>版权所有©山东财经大学</p>
+                    <p><a href="http://seo.wzmulu.com/icp/%E9%B2%81ICP%E5%A4%8705001933%E5%8F%B7">鲁ICP备05001933号-2</a></p>
+                </div>
+            </div>
+            <div class="img_weixin">
+                <img src="/images/weixin.jpg" class="weixin" />
+                <p>官方微信</p>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#logo_btn").click(function(){
+            location.href = '/'
+        });
+        $("#li_hp").click(function(){
+            location.href = 'home'
+        })
+    });
+    window.onload = function(){
+        $.getScript("/javascripts/userticket.js",function () {
+        });
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/graduationDesign.css" />
+    <script src="/javascripts/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo login_logo">
+            <a href="javascript:;" id="logo_btn"><img src="/images/logo.png"></a>
+        </div>
+    </header>
+    <div class="content">
+        <div class="xiaohui">
+            <img src="/images/xiaohui.png" />
+            <p>校车服务   方便出行</p>
+        </div>
+        <div class="login_form">
+            <%- message %>
+            <form>
+                <p class="form_title">欢迎登录山财大校车订票网</p>
+                <p class="form_zhu">注：登录仅支持学号/工号</p>
+                <span>用户名：</span><input type="text" class="login_text" id="userId" name="userId" placeholder="学号/工号" />
+                <span>密&nbsp码：</span><input type="text" class="login_password" id="password" name="password" placeholder="密码" />
+                <p class="forget"><a href="javascript:;" id="forgetpassword">忘记密码？</a></p>
+                <div class="form_btn">
+                    <a href="javascript:;" class="btn login_btn" id="login_btn">立即登录</a>
+                </div>
+                <p class="form_foot">未注册请点击：<a href="javascript:;" id="goregister_btn">立即注册</a></p>
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="img_weibo">
+                <img src="/images/weibo.jpg" class="weibo" />
+                <p>官方微博</p>
+            </div>
+            <div class="footer_center">
+                <img src="/images/blue.png" class="blue" />
+                <div class="word">
+                    <p><a href="http://www3.sdufe.edu.cn/nic/list.php?id=3104">常见网络问题解答</a></p>
+                    <p>管理员信箱：info@sdufe.edu.cn</p>
+                    <p>版权所有©山东财经大学</p>
+                    <p><a href="http://seo.wzmulu.com/icp/%E9%B2%81ICP%E5%A4%8705001933%E5%8F%B7">鲁ICP备05001933号-2</a></p>
+                </div>
+            </div>
+            <div class="img_weixin">
+                <img src="/images/weixin.jpg" class="weixin" />
+                <p>官方微信</p>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#logo_btn").click(function(){
+            location.href = '/'
+        });
+    });
+    $(function(){
+        $("#forgetpassword").click(function () {
+            location.href = 'forgetpassword'
+        })
+    })
+    $(function(){
+        $("#goregister_btn").click(function(){
+            location.href = 'register';
+        });
+        $("#login_btn").click(function(){
+            var userId = $("#userId").val();
+            var password = $("#password").val();
+            var data = {"userId":userId,"password":password};
+            $.ajax({
+                url:'/users/login',
+                type:'post',
+                data: data,
+                success: function(data,status){
+                    if(status == 'success'){
+                        if(userId != "1001"){
+                            location.href = "home"
+                        }
+                        else{
+                            location.href = "admin"
+                        }
+                    }
+                },
+                error: function(data,status){
+                    if(status == 'error'){
+                        location.href = 'login';
+                    }
+                }
+            });
+        });
+    })
+</script>
+</body>
+</html>

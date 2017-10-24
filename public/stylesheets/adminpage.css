@@ -1,0 +1,72 @@
+/* line 4, ../sass/adminpage.scss */
+.adminpage .left_nav .left_nav_ul li {
+  font-size: 18px;
+  font-weight: bold;
+}
+/* line 11, ../sass/adminpage.scss */
+.adminpage .right_con .right_title {
+  text-align: center;
+}
+/* line 13, ../sass/adminpage.scss */
+.adminpage .right_con .right_title p {
+  font-weight: bold;
+}
+/* line 17, ../sass/adminpage.scss */
+.adminpage .right_con .change_time {
+  padding: 20px 15px;
+}
+/* line 20, ../sass/adminpage.scss */
+.adminpage .right_con .admin_change_form {
+  width: 500px;
+  height: 300px;
+  vertical-align: middle;
+  margin: 0 auto;
+  text-align: center;
+}
+/* line 26, ../sass/adminpage.scss */
+.adminpage .right_con .admin_change_form span {
+  display: inline-block;
+  font-size: 18px;
+  width: 90px;
+  height: 25px;
+  text-align: right;
+}
+/* line 33, ../sass/adminpage.scss */
+.adminpage .right_con .admin_change_form input {
+  font-size: 16px;
+  text-align: center;
+}
+/* line 37, ../sass/adminpage.scss */
+.adminpage .right_con .admin_change_form .ticket_num_input {
+  width: 245px;
+  height: 25px;
+}
+/* line 41, ../sass/adminpage.scss */
+.adminpage .right_con .admin_change_form select {
+  width: 245px;
+  height: 25px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 25px;
+}
+/* line 48, ../sass/adminpage.scss */
+.adminpage .right_con .admin_change_form .change_anno_con {
+  width: 450px;
+  height: 200px;
+  font-size: 20px;
+  line-height: 24px;
+  text-indent: 2em;
+}
+/* line 56, ../sass/adminpage.scss */
+.adminpage .right_con .admin_change_btn {
+  text-align: center;
+  margin-top: 30px;
+}
+/* line 59, ../sass/adminpage.scss */
+.adminpage .right_con .admin_change_btn a {
+  width: 200px;
+  padding: 18px 0;
+  text-align: center;
+  font-size: 24px;
+  line-height: 24px;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>订票</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/graduationDesign.css" />
+    <script src="/javascripts/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">
+            <a href="javascript:;" id="logo_btn"><img src="/images/logo.png"></a>
+        </div>
+    </header>
+    <div class="nav">
+        <div class="list">
+            <nav>
+                <ul class="nav_ul">
+                    <li id="li_hp">首页</li>
+                    <li id="li_booking">订票</li>
+                    <li id="li_personal">个人中心</li>
+                </ul>
+            </nav>
+            <div class="user">
+                <span class="user_d">欢迎你，<a href="javascript:;" class="go_login_btn" target="_blank" name="username" id="username"><%- user.username %></a></span>
+                <span class="user_d"><a href="/" class="go_logout" target="_self">退出</a></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div style="width: 1000px;margin: auto;">
+            <%- message %>
+            <div style="width: 100%;min-height: 130px;margin: 115px auto">
+                <div class="con_select">
+                    <div class="order_con">
+                        <table>
+                            <thead>
+                            <tr>
+                                <td>出发日期</td>
+                                <td>出发时间</td>
+                                <td>出发校区</td>
+                                <td>目的校区</td>
+                                <td>剩余票数</td>
+                                <td>订票数</td>
+                                <td>单个票价</td>
+                                <td>操作</td>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody">
+                            <% function person(person) { %>
+                            <tr class="item-id-<%= person._id %>">
+                                <td>
+                                    <input name="ticketId" id="ticketId_<%= person._id %>" value="<%= person._id %>" type="hidden" />
+                                    <input name="ticketDay" id="ticketDay_<%= person._id %>" value="<%= person.ticketDay %>" type="hidden" />
+                                    <%= person.ticketDay %>
+                                </td>
+                                <td><input name="ticketTime" id="ticketTime_<%= person._id %>" value="<%= person.ticketTime %>" type="hidden" /><%= person.ticketTime %></td>
+                                <td><input name="originplaceticketTime" id="originplace_<%= person._id %>" value="<%= person.originplace %>" type="hidden" /><%= person.originplace %></td>
+                                <td><input name="destination" id="destination_<%= person._id %>" value="<%= person.destination %>" type="hidden" /><%= person.destination %></td>
+                                <td><input name="ticketnum" id="ticketnum_<%= person._id %>" value="<%= person.ticketnum %>" type="hidden" /><%= person.ticketnum %>张</td>
+                                <td>
+                                    <input name="userticketnum" id="userticketnum_<%= person._id %>" value="1" type="text" style="width: 30px;height: 30px;text-align: center;display: inline-block;" />张
+                                </td>
+                                <td><input name="price" id="price_<%= person._id %>" value="<%= person.price %>" type="hidden" /><%= person.price %>元</td>
+                                <td>
+                                    <a class="btn" name="item-id-<%= person._id %>" href="javascript:;" id="btn_<%= person._id %>">订票</a>
+                                </td>
+                            </tr>
+                            <% } %>
+                            <% persons.map(person) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="img_weibo">
+                <img src="/images/weibo.jpg" class="weibo" />
+                <p>官方微博</p>
+            </div>
+            <div class="footer_center">
+                <img src="/images/blue.png" class="blue" />
+                <div class="word">
+                    <p><a href="http://www3.sdufe.edu.cn/nic/list.php?id=3104">常见网络问题解答</a></p>
+                    <p>管理员信箱：info@sdufe.edu.cn</p>
+                    <p>版权所有©山东财经大学</p>
+                    <p><a href="http://seo.wzmulu.com/icp/%E9%B2%81ICP%E5%A4%8705001933%E5%8F%B7">鲁ICP备05001933号-2</a></p>
+                </div>
+            </div>
+            <div class="img_weixin">
+                <img src="/images/weixin.jpg" class="weixin" />
+                <p>官方微信</p>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#logo_btn").click(function(){
+            location.href = '/'
+        });
+        $("#li_hp").click(function(){
+            location.href = 'home'
+        });
+    });
+    $(function(){
+        $("#li_personal").click(function(){
+            var username = $("#username").text();
+            var data = {"username":username};
+            $.ajax({
+                url:'/users/ppersonal',
+                type:'post',
+                data: data,
+                success: function(data,status){
+                    if(status == 'success'){
+                        location.href = 'personal';
+                    }
+                },
+                error: function(data,status){
+                    if(status == 'error'){
+                        location.href = '/';
+                    }
+                }
+            })
+        })
+    });
+    window.onload = function(){
+        $.getScript("/javascripts/userticket.js",function () {
+        });
+    };
+//    window.onload = ajaxdata();
+    $(function () {
+//        $("#btn_<%= person_id %>").click(function(){
+//            var username = $("#username").val();
+//            var ticketDay = $("#ticketDay_<%= person_id %>").val();
+//            var ticketTime = $("#ticketTime_<%= person_id %>").val();
+//            var originplace = $("#originplace_<%= person_id %>").val();
+//            var destination = $("#destination_<%= person_id %>").val();
+//            var ticketnum = $("#ticketnum_<%= person_id %>").val();
+//            var userticketnum = $("#userticketnum_<%= person_id %>").val();
+//            var price = $("#price_<%= person_id %>").val();
+//            var data = {
+//                "username"    :username,
+//                "ticketDay"   :ticketDay,
+//                "ticketTime"  :ticketTime,
+//                "originplace" :originplace,
+//                "destination" :destination,
+//                "ticketnum"   :ticketnum,
+//                "userticketnum":userticketnum,
+//                "price"       :price
+//                };
+//            $.ajax({
+//                url:'/users/booking/userticket',
+//                type:'post',
+//                data: data,
+//                success: function(data,status){
+//                    if(status == 'success'){
+//                        location.href = 'paysuccess';
+//                    }
+//                },
+//                error: function(data,status){
+//                    if(status == 'error'){
+//                        location.href = '/';
+//                    }
+//                }
+//            });
+//        })
+    })
+</script>
+</body>
+</html>

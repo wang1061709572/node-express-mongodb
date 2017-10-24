@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>个人中心</title>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/graduationDesign.css" />
+    <script src="/javascripts/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo login_logo">
+            <a href="javascript:;" id="logo_btn"><img src="/images/logo.png"></a>
+        </div>
+    </header>
+    <div class="nav">
+        <div class="list">
+            <nav>
+                <ul class="nav_ul">
+                    <li id="li_hp">首页</li>
+                    <li id="li_booking">订票</li>
+                    <li id="li_personal">个人中心</li>
+                </ul>
+            </nav>
+            <div class="user">
+                <span class="user_d">欢迎你，<a href="javascript:;" class="go_login_btn" target="_blank" name="username" id="username"><%- user.username %></a></span>
+                <span class="user_d"><a href="/" class="go_logout" target="_self">退出</a></span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="personal">
+            <div class="left_nav">
+                <div class="left_nav_con">
+                    <p class="nav_title">我的订单</p>
+                    <ul class="left_nav_ul">
+                        <li class="nav_li_3" id="nav_li_3">基本信息</li>
+                        <li class="nav_li_2" id="nav_li_2">我的订单</li>
+                    </ul>
+                    <p class="nav_title">基本信息</p>
+                    <ul class="left_nav_ul">
+                        <li class="nav_li_1" id="nav_li_1">信息更新</li>
+                        <li class="nav_li_4" id="nav_li_4" style="color: #00438a">修改密码</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right_con">
+                <div class="li_4 margin_b">
+                    <div class="right_title">
+                        <p>
+                            <a href="#">个人中心</a>>修改密码
+                        </p>
+                    </div>
+                    <div class="info_change change_pass">
+                        <%- message %>
+                        <div class="info">
+                            <span class="info_t">旧密码：</span>
+                            <input type="text" class="change_in" id="password">
+                            <span class="info_t info_ts">*请输入旧密码</span>
+                        </div>
+                        <div class="info">
+                            <span class="info_t">新密码：</span>
+                            <input type="text" class="change_in" id="newpassword">
+                            <span class="info_t info_ts">*请输入新密码</span>
+                        </div>
+                        <div class="info">
+                            <span class="info_t">重复新密码：</span>
+                            <input type="text" class="change_in" id="newpassword1">
+                            <span class="info_t info_ts">*请再次输入新密码</span>
+                        </div>
+                        <div class="info info_btn">
+                            <a href="javascript:;" class="btn change_btn" id="change_btn">确定修改</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="img_weibo">
+                <img src="/images/weibo.jpg" class="weibo" />
+                <p>官方微博</p>
+            </div>
+            <div class="footer_center">
+                <img src="/images/blue.png" class="blue" />
+                <div class="word">
+                    <p><a href="http://www3.sdufe.edu.cn/nic/list.php?id=3104">常见网络问题解答</a></p>
+                    <p>管理员信箱：info@sdufe.edu.cn</p>
+                    <p>版权所有©山东财经大学</p>
+                    <p><a href="http://seo.wzmulu.com/icp/%E9%B2%81ICP%E5%A4%8705001933%E5%8F%B7">鲁ICP备05001933号-2</a></p>
+                </div>
+            </div>
+            <div class="img_weixin">
+                <img src="/images/weixin.jpg" class="weixin" />
+                <p>官方微信</p>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#li_hp").click(function(){
+            location.href = 'home'
+        });
+        $("#logo_btn").click(function(){
+            location.href = '/'
+        });
+    });
+    $(function(){
+        $("#li_personal").click(function(){
+            var username = $("#username").text();
+            var data = {"username":username};
+            $.ajax({
+                url:'/users/ppersonal',
+                type:'post',
+                data: data,
+                success: function(data,status){
+                    if(status == 'success'){
+                        location.href = 'personal';
+                    }
+                },
+                error: function(data,status){
+                    if(status == 'error'){
+                        location.href = '/';
+                    }
+                }
+            })
+        })
+    });
+    $(function () {
+        $("#nav_li_1").click(function(){
+            location.href = 'personal1';
+        })
+        $("#nav_li_4").click(function(){
+            location.href = 'personal3'
+        });
+    });
+    $(function () {
+        $("#nav_li_2").click(function(){
+            var username = $("#username").text();
+            var data = {"username":username};
+            $.ajax({
+                url:'/users/ppersonal2',
+                type:'post',
+                data: data,
+                success: function(data,status){
+                    if(status == 'success'){
+                        location.href = 'personal2';
+                    }
+                },
+                error: function(data,status){
+                    if(status == 'error'){
+                        location.href = 'personal2';
+                    }
+                }
+            })
+        })
+    });
+    $(function () {
+        $("#nav_li_3").click(function(){
+            var username = $("#username").text();
+            var data = {"username":username};
+            $.ajax({
+                url:'/users/ppersonal',
+                type:'post',
+                data: data,
+                success: function(data,status){
+                    if(status == 'success'){
+                        location.href = 'personal';
+                    }
+                },
+                error: function(data,status){
+                    if(status == 'error'){
+                        location.href = '/';
+                    }
+                }
+            })
+        })
+    });
+    $(function () {
+        $("#change_btn").click(function(){
+            var username = $("#username").text();
+            var password = $("#password").val();
+            var newpassword = $("#newpassword").val();
+            var newpassword1 = $("#newpassword1").val();
+            if(newpassword !== newpassword1){
+                $("#newpassword").css("border","1px solid red");
+                $("#newpassword1").css("border","1px solid red");
+                $(".passts").css({color:"red"}).html("两次密码不一致");
+                $(".passts1").css({color:"red"}).html("两次密码不一致");
+            }else if(newpassword === newpassword1){
+                var data = {
+                    "username" :username,
+                    "password":password,
+                    "newpassword":newpassword,
+                    "newpassword1"  :newpassword1};
+                $.ajax({
+                    url: '/users/newpassword',
+                    type: 'post',
+                    data: data,
+                    success: function(data,status){
+                        if(status == 'success'){
+                            location.href = 'personal3';
+                        }
+                    },
+                    error: function(data,error){
+                        location.href = 'personal3';
+                    }
+                });
+            }
+        });
+    })
+</script>
+</body>
+</html>

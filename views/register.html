@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="/javascripts/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/javascripts/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/javascripts/demo/demo.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/graduationDesign.css" />
+    <script src="/javascripts/jquery.js" type="text/javascript"></script>
+    <script src="/javascripts/jquery.easyui.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo login_logo">
+            <a href="javascript:;" id="logo_btn"><img src="/images/logo.png"></a>
+        </div>
+    </header>
+    <div class="content">
+        <div class="re_title">
+            <h2>注册新帐号</h2>
+            <p>已有帐号，<a class="gologin_btn" href="javascript:;" target="_self">直接登录</a></p>
+        </div>
+        <div class="register">
+            <%- message %>
+            <form class="register_form">
+                <div class="re_user re_input">
+                    <span class="fm_laber"><label for="userId">&nbsp用户名：</label></span>
+                    <input name="userId" id="userId" type="text" placeholder="请输入学号或工号" class="user_input i_input easyui-validatebox textbox" data-options="required:true,validType:'number'" />
+                    <div class="re_tishi">
+                        <div class="re_w">
+                            <i></i>
+                            <label class="userts">请输入学号或工号</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="re_pass re_input">
+                    <span class="fm_laber"><label for="password">登录密码：</label></span>
+                    <input name="password" id="password" type="text" placeholder="请输入密码" class="pass_input i_input easyui-validatebox textbox" data-options="required:true,validType:'length[6,16]'" />
+                    <div class="re_tishi">
+                        <div class="re_w">
+                            <i></i>
+                            <label class="passts">请输入6-16位密码</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="re_pass re_input">
+                    <span class="fm_laber"><label for="password1">确认密码：</label></span>
+                    <input name="password1" id="password1" type="text" placeholder="请再次输入相同密码" class="pass_input i_input easyui-validatebox textbox" data-options="required:true,validType:'length[6,16]'" />
+                    <div class="re_tishi">
+                        <div class="re_w">
+                            <i></i>
+                            <label class="passts1">请再次输入6-16位密码</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="re_question re_input">
+
+                </div>
+                <div class="re_question re_input">
+                    <span class="fm_laber"><label for="question">选择问题：</label></span>
+                    <select class="question_title" name="question" id="question">
+                        <option value="你的名字是什么">你的名字是什么</option>
+                        <option value="你父亲的名字是什么">你父亲的名字是什么</option>
+                        <option value="你母亲的名字是什么">你母亲的名字是什么</option>
+                    </select>
+                </div>
+                <div class="re_answer re_input">
+                    <span class="fm_laber"><label for="question">问题答案：</label></span>
+                    <input name="answer" id="answer" type="text" placeholder="请输入问题答案" class="pass_input i_input" />
+                    <div class="re_tishi">
+                        <div class="re_w">
+                            <i></i>
+                            <label class="ansts">请输入所选问题答案</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="re_yanzhenma re_input">
+                    <span class="fm_laber"><label for="yanzhenma">&nbsp验证码：</label></span>
+                    <input name="yanzhenma" id="yanzhenma" type="text" class="randomKey_input i_input" />
+                    <img src="/images/randomKey.png" />
+                    <div class="re_tishi">
+                        <div class="re_w">
+                            <i></i>
+                            <label>请输入验证码</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="re_tiaokuan re_input">
+                    <span class="fm_laber"><label></label></span>
+                    <p>
+                        <label>
+                            <input type="checkbox" checked="true" />
+                            <span>我已看过并同意<a href="#">《校车网服务条款》</a></span>
+                        </label>
+                    </p>
+                </div>
+                <div class="re_btn">
+                    <a href="javascript:;" class="btn" id="register_btn">同意条款并注册</a>
+                </div>
+            </form>
+            <div class="re_problem">
+                <div class="problem_con">
+                    <h2>注册遇到问题</h2>
+                    <p>1.为什么系统提示我的学号/工号已被使用？</p>
+                    <p>答：出现此系统提示，表示您已经注册过，建议您直接登录</p>
+                    <p>2.为什么要用学号/工号注册</p>
+                    <p>答：为了方便本校人士的使用方便</p>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <div class="img_weibo">
+                <img src="/images/weibo.jpg" class="weibo" />
+                <p>官方微博</p>
+            </div>
+            <div class="footer_center">
+                <img src="/images/blue.png" class="blue" />
+                <div class="word">
+                    <p><a href="http://www3.sdufe.edu.cn/nic/list.php?id=3104">常见网络问题解答</a></p>
+                    <p>管理员信箱：info@sdufe.edu.cn</p>
+                    <p>版权所有©山东财经大学</p>
+                    <p><a href="http://seo.wzmulu.com/icp/%E9%B2%81ICP%E5%A4%8705001933%E5%8F%B7">鲁ICP备05001933号-2</a></p>
+                </div>
+            </div>
+            <div class="img_weixin">
+                <img src="/images/weixin.jpg" class="weixin" />
+                <p>官方微信</p>
+            </div>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("#logo_btn").click(function(){
+            location.href = '/'
+        });
+    });
+    $(function () {
+        $(".gologin_btn").click(function(){
+            location.href = 'login';
+        });
+        $("#register_btn").click(function(){
+            var userId = $("#userId").val();
+            var password = $("#password").val();
+            var password1 = $("#password1").val();
+            var question = $("#question").val();
+            var answer = $("#answer").val();
+            if( typeof userId != "number"){
+                $("#userId").css("border","1px solid red");
+                $(".userts").css({color:"red"}).html("用户名格式不正确");
+            }if(password !== password1){
+                $("#password").css("border","1px solid red");
+                $("#password1").css("border","1px solid red");
+                $(".passts").css({color:"red"}).html("两次密码不一致");
+                $(".passts1").css({color:"red"}).html("两次密码不一致");
+            }else{
+                if(password === password1){
+                    if(6 <= length <= 16){
+                        var data = {
+                            "userId"  :userId,
+                            "password":password,
+                            "question":question,
+                            "answer"  :answer};
+                        $.ajax({
+                            url: '/users/new/register',
+                            type: 'post',
+                            data: data,
+                            success: function(data,status){
+                                if(status == 'success'){
+                                    location.href = 'login';
+                                }
+                            },
+                            error: function(data,error){
+                                location.href = 'register';
+                            }
+                        });
+                    }else{
+                        $("#password").css("border","1px solid red");
+                        $("#password1").css("border","1px solid red");
+                        $(".passts").css({color:"red"}).html("密码长度不正确");
+                        $(".passts1").css({color:"red"}).html("密码长度不正确");
+                    }
+                }
+            }
+        });
+    })
+</script>
+</body>
+</html>
